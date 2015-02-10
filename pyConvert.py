@@ -25,11 +25,10 @@ def Default(): return 'error'
 def GetOptions(format):
     try:
         return {'wav': Wav,
-                 'mp3': Mp3,
-                 'avi': Avi,
-                 'ogg': Ogg,
-                 'mpg': Mpg
-                }[format]
+                'mp3': Mp3,
+                'avi': Avi,
+                'ogg': Ogg,
+                'mpg': Mpg}[format]
     except KeyError:
         return Default
 
@@ -64,24 +63,6 @@ def GetCommandOptions(audio_format, bitrate):
     Helper routine that formats a string with the optional argument for the
     ffmpeg command, every output format will require a different set of options.
     """
-    
-    """
-    options = '-ab {} '.format(bitrate)
-    if audio_format == 'wav':
-        options += '-ac 2 -ar 48000 -vn'
-    elif audio_format == 'mp3':
-        pass
-    elif audio_format == 'avi':
-        options += '-ar 22050 -r 30 -s 480x360 -vcodec flv -qscale 9.5'
-    elif audio_format == 'ogg':
-        options += '-strict -2 -acodec vorbis -aq 60'
-    elif audio_format == 'mpg':
-        options += '-target ntsc-dvd -aspect 4:3'
-    else:
-        options = ''
-    return options
-    """
-
     return '-ab {} {}'.format(bitrate, GetOptions(audio_format)())
 
 
