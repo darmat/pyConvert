@@ -12,3 +12,8 @@ At the moment only a few formats are supported:
 - Mpg
 - Avi
 - Wav
+
+Example:
+````
+> python pyConverter -i my_input_file.wav -f mp3
+````
